@@ -30,12 +30,10 @@ namespace Project_A
                 Console.WriteLine("Student ID: {0}, Name: {1}, Age: {2}, Address: {3}, GPA: {4}, MathScore: {5}", student.Id, student.Name, student.Age, student.Address, student.GPA, student.MathScore);
             }
         }
-
         public void SortByGPA()
         {
             students.Sort((s1, s2) => s1.GPA.CompareTo(s2.GPA));
         }
-
         public Student FindStudentWithHighestMathScore()
         {
             if (students.Count == 0)

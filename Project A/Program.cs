@@ -282,96 +282,126 @@ namespace Project_A
             //Console.WriteLine("Nhân viên sau khi được sửa và huỷ:");
             //manager.ShowEmployees();
 
-            int n;
-            Console.WriteLine("Enter the number of students: ");
-            n = int.Parse(Console.ReadLine());
-
-            StudentManager studentManager = new StudentManager();
-            
-            for (int i = 0; i < n; i++)
+           
+            while (true)
             {
-                Student students = new Student();
+                Console.WriteLine("Select an option:");
+                Console.WriteLine("1. Nhập giá trị cho danh sách học sinh");
+                Console.WriteLine("2. Sắp xếp học sinh theo chiều tăng dần của điểm trung bình");
+                Console.WriteLine("3. Tìm đối tượng học sinh có điểm toán cao nhất");
+                Console.WriteLine("4. Hiển thị tất cả học sinh có tuổi lớn hơn 23");
+                Console.WriteLine("5. Tìm tất cả sinh viên có họ (Hoàng)");
+                Console.WriteLine("6. Hiển thị danh sách sinh viên có địa chỉ ở (Hà nộ)");
+                Console.WriteLine("7. Exit");
 
-                Console.WriteLine("Enter the student ID: ");
-                students.Id = int.Parse(Console.ReadLine());
+                int option = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("Enter the student name: ");
-                students.Name = Console.ReadLine();
-
-                Console.WriteLine("Enter the student age: ");
-                students.Age = int.Parse(Console.ReadLine());
-
-                Console.WriteLine("Enter the student address: ");
-                students.Address = Console.ReadLine();
-
-                //Console.WriteLine("Enter the student gpa: ");
-                //students.GPA = double.Parse(Console.ReadLine());
-
-                //Console.WriteLine("Enter the student mathScore: ");
-                //students.MathScore = double.Parse(Console.ReadLine());
-
-                studentManager.AddStudent(students);
-
-            }
-            studentManager.ShowStudent();
-            //studentManager.SortByGPA();
-
-            //Console.WriteLine("\nStudents after sorting by GPA:");
-            //studentManager.ShowStudent();
-
-            //Student studentWithHighestMathScore = studentManager.FindStudentWithHighestMathScore();
-
-            //if (studentWithHighestMathScore != null)
-            //{
-            //    Console.WriteLine("Student with the highest math score:");
-            //    Console.WriteLine(studentWithHighestMathScore.MathScore);
-            //}
-            //else
-            //{
-            //    Console.WriteLine("No students in the list.");
-            //}
-
-            //int targetAge = 23;
-
-            //List<Student> studentsAboveAge = studentManager.GetStudentsAboveAge(targetAge);
-
-            //Console.WriteLine($"Students above age {targetAge}:");
-            //foreach (Student student in studentsAboveAge)
-            //{
-            //    Console.WriteLine("Student ID: {0}, Name: {1}, Age: {2}, Address: {3}, GPA: {4}, MathScore: {5}", student.Id, student.Name, student.Age, student.Address, student.GPA, student.MathScore);
-            //}
-
-            string firstName = "Hoang";
-            Console.WriteLine($"Students have FirstName ({firstName}):");
-            List<Student> studentFirstName = studentManager.FindStudentsFirstName(firstName);
-            if (studentFirstName.Count > 0 )
-            {
-                foreach (Student student in studentFirstName)
+                StudentManager studentManager = new StudentManager();
+                if (option == 1)
                 {
-                    Console.WriteLine("Student ID: {0}, Name: {1}", student.Id, student.Name);
-                }
-            }
-            else
-            {
-                Console.WriteLine($"Students have not FirstName {firstName}:");
-            }
+                    int n;
+                    Console.WriteLine("Nhập số lượng học sinh: ");
+                    n = int.Parse(Console.ReadLine());
 
-            string address = "Ha noi";
-            Console.WriteLine($"The Address have Name ({address}):");
-            List<Student> studentAddressName = studentManager.FindAddressName(address);
-            if (studentAddressName.Count > 0)
-            {
-                foreach (Student student in studentAddressName)
+                    for (int i = 0; i < n; i++)
+                    {
+                        Student students = new Student();
+
+                        Console.WriteLine("student ID: ");
+                        students.Id = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("student name: ");
+                        students.Name = Console.ReadLine();
+
+                        Console.WriteLine("student age: ");
+                        students.Age = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("student address: ");
+                        students.Address = Console.ReadLine();
+
+                        Console.WriteLine("student gpa: ");
+                        students.GPA = double.Parse(Console.ReadLine());
+
+                        Console.WriteLine("student mathScore: ");
+                        students.MathScore = double.Parse(Console.ReadLine());
+
+                        studentManager.AddStudent(students);
+
+                    }
+                    studentManager.ShowStudent();
+                }
+                else if (option == 2)
                 {
-                    Console.WriteLine("Address: {0}", student.Address);
-                }
-            }
-            else
-            {
-                Console.WriteLine($"The Address have not Name ({address}):");
-            }
+                    studentManager.SortByGPA();
 
-            Console.ReadKey();
+                    Console.WriteLine("\nSắp xếp học sinh theo chiều tăng dần của điểm trung bình:");
+                    studentManager.ShowStudent();
+                }
+                else if (option == 3)
+                {
+                    Student studentWithHighestMathScore = studentManager.FindStudentWithHighestMathScore();
+
+                    if (studentWithHighestMathScore != null)
+                    {
+                        Console.WriteLine("Student with the highest math score:");
+                        Console.WriteLine(studentWithHighestMathScore.MathScore);
+                    }
+                    else
+                    {
+                        Console.WriteLine("No students in the list.");
+                    }
+                }
+                else if (option == 4)
+                {
+                    int targetAge = 23;
+
+                    List<Student> studentsAboveAge = studentManager.GetStudentsAboveAge(targetAge);
+
+                    Console.WriteLine($"Students above age {targetAge}:");
+                    foreach (Student student in studentsAboveAge)
+                    {
+                        Console.WriteLine("Student ID: {0}, Name: {1}, Age: {2}, Address: {3}, GPA: {4}, MathScore: {5}", student.Id, student.Name, student.Age, student.Address, student.GPA, student.MathScore);
+                    }
+                }
+                else if (option == 5)
+                {
+                    string firstName = "Hoang";
+                    Console.WriteLine($"Students have FirstName ({firstName}):");
+                    List<Student> studentFirstName = studentManager.FindStudentsFirstName(firstName);
+                    if (studentFirstName.Count > 0)
+                    {
+                        foreach (Student student in studentFirstName)
+                        {
+                            Console.WriteLine("Student ID: {0}, Name: {1}", student.Id, student.Name);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Students have not FirstName {firstName}:");
+                    }
+                }
+                else if (option == 6)
+                {
+                    string address = "Ha noi";
+                    Console.WriteLine($"The Address have Name ({address}):");
+                    List<Student> studentAddressName = studentManager.FindAddressName(address);
+                    if (studentAddressName.Count > 0)
+                    {
+                        foreach (Student student in studentAddressName)
+                        {
+                            Console.WriteLine("Address: {0}", student.Address);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"The Address have not Name ({address}):");
+                    }
+                }
+                else if (option == 7)
+                {
+                    break;
+                }
+                    Console.ReadKey();
             Console.ReadLine();
         }
     }
