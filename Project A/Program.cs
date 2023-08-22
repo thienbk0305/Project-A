@@ -111,7 +111,7 @@ namespace Project_A
         }
         static void Main(string[] args)
         {
-            //Console.OutputEncoding = Encoding.UTF8; // Set the console's encoding to UTF-8
+            Console.OutputEncoding = Encoding.UTF8; // Set the console's encoding to UTF-8
             //Console.WriteLine("--------------------------------------------------------");
             //Console.WriteLine("ProductNumber:");
 
@@ -282,7 +282,7 @@ namespace Project_A
             //Console.WriteLine("Nhân viên sau khi được sửa và huỷ:");
             //manager.ShowEmployees();
 
-           
+
             while (true)
             {
                 Console.WriteLine("Select an option:");
@@ -299,6 +299,7 @@ namespace Project_A
                 StudentManager studentManager = new StudentManager();
                 if (option == 1)
                 {
+                    Console.WriteLine("1. Nhập giá trị cho danh sách học sinh");
                     int n;
                     Console.WriteLine("Nhập số lượng học sinh: ");
                     n = int.Parse(Console.ReadLine());
@@ -307,22 +308,22 @@ namespace Project_A
                     {
                         Student students = new Student();
 
-                        Console.WriteLine("student ID: ");
+                        Console.WriteLine("student ID " + i + ": ");
                         students.Id = int.Parse(Console.ReadLine());
 
-                        Console.WriteLine("student name: ");
+                        Console.WriteLine("student name " + i + ": ");
                         students.Name = Console.ReadLine();
 
-                        Console.WriteLine("student age: ");
+                        Console.WriteLine("student age " + i + ": ";
                         students.Age = int.Parse(Console.ReadLine());
 
-                        Console.WriteLine("student address: ");
+                        Console.WriteLine("student address " + i + ": ");
                         students.Address = Console.ReadLine();
 
-                        Console.WriteLine("student gpa: ");
+                        Console.WriteLine("student gpa " + i + ": ");
                         students.GPA = double.Parse(Console.ReadLine());
 
-                        Console.WriteLine("student mathScore: ");
+                        Console.WriteLine("student mathScore " + i + ": ");
                         students.MathScore = double.Parse(Console.ReadLine());
 
                         studentManager.AddStudent(students);
@@ -332,6 +333,7 @@ namespace Project_A
                 }
                 else if (option == 2)
                 {
+                    Console.WriteLine("2. Sắp xếp học sinh theo chiều tăng dần của điểm trung bình");
                     studentManager.SortByGPA();
 
                     Console.WriteLine("\nSắp xếp học sinh theo chiều tăng dần của điểm trung bình:");
@@ -339,6 +341,7 @@ namespace Project_A
                 }
                 else if (option == 3)
                 {
+                    Console.WriteLine("3. Tìm đối tượng học sinh có điểm toán cao nhất");
                     Student studentWithHighestMathScore = studentManager.FindStudentWithHighestMathScore();
 
                     if (studentWithHighestMathScore != null)
@@ -353,6 +356,7 @@ namespace Project_A
                 }
                 else if (option == 4)
                 {
+                    Console.WriteLine("4. Hiển thị tất cả học sinh có tuổi lớn hơn 23");
                     int targetAge = 23;
 
                     List<Student> studentsAboveAge = studentManager.GetStudentsAboveAge(targetAge);
@@ -365,6 +369,7 @@ namespace Project_A
                 }
                 else if (option == 5)
                 {
+                    Console.WriteLine("5. Tìm tất cả sinh viên có họ (Hoàng)");
                     string firstName = "Hoang";
                     Console.WriteLine($"Students have FirstName ({firstName}):");
                     List<Student> studentFirstName = studentManager.FindStudentsFirstName(firstName);
@@ -382,6 +387,7 @@ namespace Project_A
                 }
                 else if (option == 6)
                 {
+                    Console.WriteLine("6. Hiển thị danh sách sinh viên có địa chỉ ở (Hà nộ)");
                     string address = "Ha noi";
                     Console.WriteLine($"The Address have Name ({address}):");
                     List<Student> studentAddressName = studentManager.FindAddressName(address);
@@ -401,8 +407,9 @@ namespace Project_A
                 {
                     break;
                 }
-                    Console.ReadKey();
-            Console.ReadLine();
+                Console.ReadKey();
+                Console.ReadLine();
+            }
         }
     }
 }
