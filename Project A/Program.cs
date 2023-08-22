@@ -4,10 +4,11 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using static Project_A.Program;
 
 namespace Project_A
 {
-    internal class Program
+    public class Program
     {
         public struct Product
         {
@@ -112,8 +113,8 @@ namespace Project_A
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8; // Set the console's encoding to UTF-8
-            //Console.WriteLine("--------------------------------------------------------");
-            //Console.WriteLine("ProductNumber:");
+                                                    //Console.WriteLine("--------------------------------------------------------");
+                                                    //Console.WriteLine("ProductNumber:");
 
             //var n = Convert.ToInt32(Console.ReadLine());
             //var structProd = new Product();
@@ -282,134 +283,178 @@ namespace Project_A
             //Console.WriteLine("Nhân viên sau khi được sửa và huỷ:");
             //manager.ShowEmployees();
 
+            //while (true)
+            //{
+            //    Console.WriteLine("Select an option:");
+            //    Console.WriteLine("1. Nhập giá trị cho danh sách học sinh");
+            //    Console.WriteLine("2. Sắp xếp học sinh theo chiều tăng dần của điểm trung bình");
+            //    Console.WriteLine("3. Tìm đối tượng học sinh có điểm toán cao nhất");
+            //    Console.WriteLine("4. Hiển thị tất cả học sinh có tuổi lớn hơn 23");
+            //    Console.WriteLine("5. Tìm tất cả sinh viên có họ (Hoàng)");
+            //    Console.WriteLine("6. Hiển thị danh sách sinh viên có địa chỉ ở (Hà nộ)");
+            //    Console.WriteLine("7. Exit");
 
-            while (true)
+            //    int option = int.Parse(Console.ReadLine());
+
+            //    StudentManager studentManager = new StudentManager();
+            //    if (option == 1)
+            //    {
+            //        Console.WriteLine("1. Nhập giá trị cho danh sách học sinh");
+            //        int n;
+            //        Console.WriteLine("Nhập số lượng học sinh: ");
+            //        n = int.Parse(Console.ReadLine());
+
+            //        for (int i = 0; i < n; i++)
+            //        {
+            //            Student students = new Student();
+
+            //            Console.WriteLine("student ID " + i + ": ");
+            //            students.Id = int.Parse(Console.ReadLine());
+
+            //            Console.WriteLine("student name " + i + ": ");
+            //            students.Name = Console.ReadLine();
+
+            //            Console.WriteLine("student age " + i + ": ";
+            //            students.Age = int.Parse(Console.ReadLine());
+
+            //            Console.WriteLine("student address " + i + ": ");
+            //            students.Address = Console.ReadLine();
+
+            //            Console.WriteLine("student gpa " + i + ": ");
+            //            students.GPA = double.Parse(Console.ReadLine());
+
+            //            Console.WriteLine("student mathScore " + i + ": ");
+            //            students.MathScore = double.Parse(Console.ReadLine());
+
+            //            studentManager.AddStudent(students);
+
+            //        }
+            //        studentManager.ShowStudent();
+            //    }
+            //    else if (option == 2)
+            //    {
+            //        Console.WriteLine("2. Sắp xếp học sinh theo chiều tăng dần của điểm trung bình");
+            //        studentManager.SortByGPA();
+
+            //        Console.WriteLine("\nSắp xếp học sinh theo chiều tăng dần của điểm trung bình:");
+            //        studentManager.ShowStudent();
+            //    }
+            //    else if (option == 3)
+            //    {
+            //        Console.WriteLine("3. Tìm đối tượng học sinh có điểm toán cao nhất");
+            //        Student studentWithHighestMathScore = studentManager.FindStudentWithHighestMathScore();
+
+            //        if (studentWithHighestMathScore != null)
+            //        {
+            //            Console.WriteLine("Student with the highest math score:");
+            //            Console.WriteLine(studentWithHighestMathScore.MathScore);
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("No students in the list.");
+            //        }
+            //    }
+            //    else if (option == 4)
+            //    {
+            //        Console.WriteLine("4. Hiển thị tất cả học sinh có tuổi lớn hơn 23");
+            //        int targetAge = 23;
+
+            //        List<Student> studentsAboveAge = studentManager.GetStudentsAboveAge(targetAge);
+
+            //        Console.WriteLine($"Students above age {targetAge}:");
+            //        foreach (Student student in studentsAboveAge)
+            //        {
+            //            Console.WriteLine("Student ID: {0}, Name: {1}, Age: {2}, Address: {3}, GPA: {4}, MathScore: {5}", student.Id, student.Name, student.Age, student.Address, student.GPA, student.MathScore);
+            //        }
+            //    }
+            //    else if (option == 5)
+            //    {
+            //        Console.WriteLine("5. Tìm tất cả sinh viên có họ (Hoàng)");
+            //        string firstName = "Hoang";
+            //        Console.WriteLine($"Students have FirstName ({firstName}):");
+            //        List<Student> studentFirstName = studentManager.FindStudentsFirstName(firstName);
+            //        if (studentFirstName.Count > 0)
+            //        {
+            //            foreach (Student student in studentFirstName)
+            //            {
+            //                Console.WriteLine("Student ID: {0}, Name: {1}", student.Id, student.Name);
+            //            }
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine($"Students have not FirstName {firstName}:");
+            //        }
+            //    }
+            //    else if (option == 6)
+            //    {
+            //        Console.WriteLine("6. Hiển thị danh sách sinh viên có địa chỉ ở (Hà nộ)");
+            //        string address = "Ha noi";
+            //        Console.WriteLine($"The Address have Name ({address}):");
+            //        List<Student> studentAddressName = studentManager.FindAddressName(address);
+            //        if (studentAddressName.Count > 0)
+            //        {
+            //            foreach (Student student in studentAddressName)
+            //            {
+            //                Console.WriteLine("Address: {0}", student.Address);
+            //            }
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine($"The Address have not Name ({address}):");
+            //        }
+            //    }
+            //    else if (option == 7)
+            //    {
+            //        break;
+            //    }
+
+            //}
+            //Student_P student = new Student_P();
+            //student.SetName("John");
+            //student.SetAge(20);
+
+            //Teacher teacher = new Teacher();
+            //teacher.SetName("Ms. Smith");
+            //teacher.SetJob("Math Teacher");
+
+            //Console.WriteLine("Student Information:");
+            //student.ShowStudentInfo();
+
+            //Console.WriteLine("\nTeacher Information:");
+            //teacher.ShowTeacherInfo();
+
+            List<Book> books = new List<Book>();
+            int n;
+            Console.WriteLine("Nhập số lượng Book: ");
+            n = int.Parse(Console.ReadLine());
+            for (int i = 1;i<n+1; i++)
             {
-                Console.WriteLine("Select an option:");
-                Console.WriteLine("1. Nhập giá trị cho danh sách học sinh");
-                Console.WriteLine("2. Sắp xếp học sinh theo chiều tăng dần của điểm trung bình");
-                Console.WriteLine("3. Tìm đối tượng học sinh có điểm toán cao nhất");
-                Console.WriteLine("4. Hiển thị tất cả học sinh có tuổi lớn hơn 23");
-                Console.WriteLine("5. Tìm tất cả sinh viên có họ (Hoàng)");
-                Console.WriteLine("6. Hiển thị danh sách sinh viên có địa chỉ ở (Hà nộ)");
-                Console.WriteLine("7. Exit");
+                Book book = new Book();
 
-                int option = int.Parse(Console.ReadLine());
+                Console.WriteLine("Title " + i + ": ");
+                book.Title = Console.ReadLine();
 
-                StudentManager studentManager = new StudentManager();
-                if (option == 1)
-                {
-                    Console.WriteLine("1. Nhập giá trị cho danh sách học sinh");
-                    int n;
-                    Console.WriteLine("Nhập số lượng học sinh: ");
-                    n = int.Parse(Console.ReadLine());
+                Console.WriteLine("Author " + i + ": ");
+                book.Author = Console.ReadLine();
 
-                    for (int i = 0; i < n; i++)
-                    {
-                        Student students = new Student();
+                Console.WriteLine("Publisher " + i + ": ");
+                book.Publisher = Console.ReadLine();
 
-                        Console.WriteLine("student ID " + i + ": ");
-                        students.Id = int.Parse(Console.ReadLine());
+                Console.WriteLine("YearOfPublication " + i + ": ");
+                book.YearOfPublication = int.Parse(Console.ReadLine());
 
-                        Console.WriteLine("student name " + i + ": ");
-                        students.Name = Console.ReadLine();
-
-                        Console.WriteLine("student age " + i + ": ";
-                        students.Age = int.Parse(Console.ReadLine());
-
-                        Console.WriteLine("student address " + i + ": ");
-                        students.Address = Console.ReadLine();
-
-                        Console.WriteLine("student gpa " + i + ": ");
-                        students.GPA = double.Parse(Console.ReadLine());
-
-                        Console.WriteLine("student mathScore " + i + ": ");
-                        students.MathScore = double.Parse(Console.ReadLine());
-
-                        studentManager.AddStudent(students);
-
-                    }
-                    studentManager.ShowStudent();
-                }
-                else if (option == 2)
-                {
-                    Console.WriteLine("2. Sắp xếp học sinh theo chiều tăng dần của điểm trung bình");
-                    studentManager.SortByGPA();
-
-                    Console.WriteLine("\nSắp xếp học sinh theo chiều tăng dần của điểm trung bình:");
-                    studentManager.ShowStudent();
-                }
-                else if (option == 3)
-                {
-                    Console.WriteLine("3. Tìm đối tượng học sinh có điểm toán cao nhất");
-                    Student studentWithHighestMathScore = studentManager.FindStudentWithHighestMathScore();
-
-                    if (studentWithHighestMathScore != null)
-                    {
-                        Console.WriteLine("Student with the highest math score:");
-                        Console.WriteLine(studentWithHighestMathScore.MathScore);
-                    }
-                    else
-                    {
-                        Console.WriteLine("No students in the list.");
-                    }
-                }
-                else if (option == 4)
-                {
-                    Console.WriteLine("4. Hiển thị tất cả học sinh có tuổi lớn hơn 23");
-                    int targetAge = 23;
-
-                    List<Student> studentsAboveAge = studentManager.GetStudentsAboveAge(targetAge);
-
-                    Console.WriteLine($"Students above age {targetAge}:");
-                    foreach (Student student in studentsAboveAge)
-                    {
-                        Console.WriteLine("Student ID: {0}, Name: {1}, Age: {2}, Address: {3}, GPA: {4}, MathScore: {5}", student.Id, student.Name, student.Age, student.Address, student.GPA, student.MathScore);
-                    }
-                }
-                else if (option == 5)
-                {
-                    Console.WriteLine("5. Tìm tất cả sinh viên có họ (Hoàng)");
-                    string firstName = "Hoang";
-                    Console.WriteLine($"Students have FirstName ({firstName}):");
-                    List<Student> studentFirstName = studentManager.FindStudentsFirstName(firstName);
-                    if (studentFirstName.Count > 0)
-                    {
-                        foreach (Student student in studentFirstName)
-                        {
-                            Console.WriteLine("Student ID: {0}, Name: {1}", student.Id, student.Name);
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Students have not FirstName {firstName}:");
-                    }
-                }
-                else if (option == 6)
-                {
-                    Console.WriteLine("6. Hiển thị danh sách sinh viên có địa chỉ ở (Hà nộ)");
-                    string address = "Ha noi";
-                    Console.WriteLine($"The Address have Name ({address}):");
-                    List<Student> studentAddressName = studentManager.FindAddressName(address);
-                    if (studentAddressName.Count > 0)
-                    {
-                        foreach (Student student in studentAddressName)
-                        {
-                            Console.WriteLine("Address: {0}", student.Address);
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine($"The Address have not Name ({address}):");
-                    }
-                }
-                else if (option == 7)
-                {
-                    break;
-                }
-                Console.ReadKey();
-                Console.ReadLine();
+                Console.WriteLine("ISBN " + i + ": ");
+                book.ISBN = Console.ReadLine();
+                books.Add(book);
             }
+            foreach (var book in books)
+            {
+                Console.WriteLine("PrintBookInfo: ");
+                book.PrintBookInfo();
+            }    
+                
+            Console.ReadKey();
+            Console.ReadLine();
         }
     }
 }
