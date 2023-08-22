@@ -425,7 +425,7 @@ namespace Project_A
 
             List<Book> books = new List<Book>();
             int n;
-            Console.WriteLine("Nhập số lượng Book: ");
+            Console.WriteLine("Enter Number Book: ");
             n = int.Parse(Console.ReadLine());
             for (int i = 1;i<n+1; i++)
             {
