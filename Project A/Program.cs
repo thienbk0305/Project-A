@@ -10,25 +10,25 @@ namespace Project_A
 {
     public class Program
     {
-        public struct Product
-        {
-            public string _productName { get; set; }
-            public decimal _productPrice { get; set; }
-            public DateTime _expireDate { get; set; }
-            public int Run(DateTime expireDate)
-            {
-                TimeSpan interval = expireDate.Subtract(DateTime.Now);
+        //public struct Product
+        //{
+        //    public string _productName { get; set; }
+        //    public decimal _productPrice { get; set; }
+        //    public DateTime _expireDate { get; set; }
+        //    public int Run(DateTime expireDate)
+        //    {
+        //        TimeSpan interval = expireDate.Subtract(DateTime.Now);
 
-                if (interval.Days < 180)
-                {
-                    return interval.Days;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        //        if (interval.Days < 180)
+        //        {
+        //            return interval.Days;
+        //        }
+        //        else
+        //        {
+        //            return 0;
+        //        }
+        //    }
+        //}
         static int GetStringLength(string str)
         {
             int length = 0;
@@ -491,45 +491,175 @@ namespace Project_A
             //    }
             //}
 
-            Console.WriteLine("Enter Number supermarketGoods: ");
-            List<Good> supermarketGoods = new List<Good>();
-            int nGoods = int.Parse(Console.ReadLine());
-            for (int i = 1; i<nGoods+1; i++)
+            //Console.WriteLine("Enter Number supermarketGoods: ");
+            //List<Good> supermarketGoods = new List<Good>();
+            //int nGoods = int.Parse(Console.ReadLine());
+            //for (int i = 1; i<nGoods+1; i++)
+            //{
+            //    Good goods = new Good();
+            //    Console.WriteLine("Code " + i + ": ");
+            //    goods.Code = int.Parse(Console.ReadLine());
+
+            //    Console.WriteLine("GoodName " + i + ": ");
+            //    goods.GoodName = Console.ReadLine();
+
+            //    Console.WriteLine("Quantity " + i + ": ");
+            //    goods.Quantity = int.Parse(Console.ReadLine());
+
+            //    Console.WriteLine("UnitPrice " + i + ": ");
+            //    goods.UnitPrice = decimal.Parse(Console.ReadLine());
+
+            //    supermarketGoods.Add(goods);
+            //}
+
+            //Console.WriteLine("Goods in the Supermarket:");
+            //foreach (Good good in supermarketGoods)
+            //{
+            //    good.PrintGoodInfo();
+            //    Console.WriteLine();
+            //}
+
+            //Console.WriteLine("Goods with Quantity Less Than 5 for Import:");
+            //foreach (Good good in supermarketGoods)
+            //{
+            //    if (good.Quantity < 5)
+            //    {
+            //        Console.WriteLine(good.GoodName);
+            //    }
+            //}
+
+            //Console.WriteLine("Enter Number Bills: ");
+            //List<Item> items = new List<Item>();
+            //int nitems = int.Parse(Console.ReadLine());
+            //for (int i = 1; i < nitems + 1; i++)
+            //{
+            //    Item item = new Item();
+            //    Console.WriteLine("Code " + i + ": ");
+            //    item.CommodityCode = int.Parse(Console.ReadLine());
+
+            //    Console.WriteLine("GoodName " + i + ": ");
+            //    item.GoodName = Console.ReadLine();
+
+            //    Console.WriteLine("Quantity " + i + ": ");
+            //    item.Quantity = int.Parse(Console.ReadLine());
+
+            //    Console.WriteLine("UnitPrice " + i + ": ");
+            //    item.UnitPrice = decimal.Parse(Console.ReadLine());
+
+            //    items.Add(item);
+            //}
+            //Item item1 = new Item();
+            //Console.WriteLine("Customer Purchase Invoice:");
+            //item1.PrintBill();
+
+            //Console.WriteLine("Nhập số lượng sinh viên");
+            //int n= int.Parse(Console.ReadLine());
+            //List<Student_1> studentManager = new List<Student_1>();
+            //for (int i = 0; i < n; i++)
+            //{
+            //    Student_1 students = new Student_1();
+
+            //    Console.WriteLine("Number " + i + ": ");
+            //    students.Number = int.Parse(Console.ReadLine());
+
+            //    Console.WriteLine("FullName " + i + ": ");
+            //    students.FullName = Console.ReadLine();
+
+            //    Console.WriteLine("StudentID " + i + ": ");
+            //    students.StudentID = Console.ReadLine();
+
+            //    Console.WriteLine("ComponentScore " + i + ": ");
+            //    students.ComponentScore = int.Parse(Console.ReadLine());
+
+            //    Console.WriteLine("ExamScore " + i + ": ");
+            //    students.ExamScore = double.Parse(Console.ReadLine());
+
+            //    Console.WriteLine("EndScore " + i + ": ");
+            //    students.EndScore = double.Parse(Console.ReadLine());
+
+            //    studentManager.Add(students);
+
+            //}
+            //Console.WriteLine("Students Needing Retake:");
+            //foreach (Student_1 student in studentManager)
+            //{
+            //    if (student.RetakeScore())
+            //    {
+            //        student.PrintStudentInfo();
+            //        Console.WriteLine();
+            //    }
+            //}
+
+            IProductManager productManager = new ProductManager();
+            while (true)
             {
-                Good goods = new Good();
-                Console.WriteLine("Code " + i + ": ");
-                goods.Code = int.Parse(Console.ReadLine());
-
-                Console.WriteLine("GoodName " + i + ": ");
-                goods.GoodName = Console.ReadLine();
-
-                Console.WriteLine("Quantity " + i + ": ");
-                goods.Quantity = int.Parse(Console.ReadLine());
-
-                Console.WriteLine("UnitPrice " + i + ": ");
-                goods.UnitPrice = decimal.Parse(Console.ReadLine());
-
-                supermarketGoods.Add(goods);
-            }
-
-            Console.WriteLine("Goods in the Supermarket:");
-            foreach (Good good in supermarketGoods)
-            {
-                good.PrintGoodInfo();
-                Console.WriteLine();
-            }
-
-            Console.WriteLine("Goods with Quantity Less Than 5 for Import:");
-            foreach (Good good in supermarketGoods)
-            {
-                if (good.Quantity < 5)
+                Console.WriteLine("1. Nhập vào thông tin danh sách các sản phẩm");
+                Console.WriteLine("2. Hiển thị danh sách sản phẩm");
+                Console.WriteLine("3. Update thông tin sản phẩm với id sản phẩm nhập từ bàn phím");
+                Console.WriteLine("4. Xóa sản phẩm với id sản phẩm nhập từ bàn phím");
+                Console.WriteLine("5. Ghi danh sách sản phẩm xuống file text");
+                Console.WriteLine("0. Thoát");
+                Console.Write("Vui lòng chọn: ");
+                int choice = int.Parse(Console.ReadLine());
+                switch (choice)
                 {
-                    Console.WriteLine(good.GoodName);
+                    case 1:
+                        Product newProduct = new Product();
+                        Console.Write("Enter Id: ");
+                        newProduct.Id = int.Parse(Console.ReadLine());
+                        Console.Write("Enter Product Name: ");
+                        newProduct.Name = Console.ReadLine();
+                        Console.Write("Enter Product Price: ");
+                        newProduct.Price = decimal.Parse(Console.ReadLine());
+                        Console.Write("Enter Product Quantity: ");
+                        newProduct.Quantity = int.Parse(Console.ReadLine());
+
+                        productManager.ProductInsert(newProduct);
+                        break;
+                    case 2:
+                        productManager.ShowProductList();
+                        break;
+                    case 3:
+                        Console.Write("Enter Product ID to Update: ");
+                        int idToUpdate = int.Parse(Console.ReadLine());
+
+                        Product productToUpdate = productManager.GetProductById(idToUpdate);
+                        if (productToUpdate != null)
+                        {
+                            Console.Write("Enter Updated Product Name: ");
+                            string updatedName = Console.ReadLine();
+                            Console.Write("Enter Updated Product Price: ");
+                            decimal updatedPrice = decimal.Parse(Console.ReadLine());
+                            Console.Write("Enter Updated Product Quantity: ");
+                            int updatedQuantity = int.Parse(Console.ReadLine());
+
+                            Product updatedProduct = new Product { Id = productToUpdate.Id, Name = updatedName, Price = updatedPrice, Quantity = updatedQuantity };
+                            productManager.ProductUpdate(idToUpdate, updatedProduct);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Product not found.");
+                        }
+                        break;
+
+                    case 4:
+                        Console.Write("Enter Product ID to Delete: ");
+                        int idToDelete = int.Parse(Console.ReadLine());
+                        productManager.ProductDelete(idToDelete);
+                        break;
+
+                    case 5:
+                        Console.Write("Enter File Name to Save: ");
+                        string fileName = Console.ReadLine();
+                        productManager.SaveToFile(fileName);
+                        break;
+                    case 0: return;
+                    default:
+                        Console.WriteLine("Chọn chưa đúng");
+                        break;
                 }
             }
 
-            Console.ReadKey();
-            Console.ReadLine();
         }
     }
 }
