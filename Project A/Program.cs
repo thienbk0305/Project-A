@@ -423,36 +423,111 @@ namespace Project_A
             //Console.WriteLine("\nTeacher Information:");
             //teacher.ShowTeacherInfo();
 
-            List<Book> books = new List<Book>();
-            int n;
-            Console.WriteLine("Enter Number Books: ");
-            n = int.Parse(Console.ReadLine());
-            for (int i = 1;i<n+1; i++)
+            //List<Book> books = new List<Book>();
+            //int n;
+            //Console.WriteLine("Enter Number Books: ");
+            //n = int.Parse(Console.ReadLine());
+            //for (int i = 1;i<n+1; i++)
+            //{
+            //    Book book = new Book();
+
+            //    Console.WriteLine("Title " + i + ": ");
+            //    book.Title = Console.ReadLine();
+
+            //    Console.WriteLine("Author " + i + ": ");
+            //    book.Author = Console.ReadLine();
+
+            //    Console.WriteLine("Publisher " + i + ": ");
+            //    book.Publisher = Console.ReadLine();
+
+            //    Console.WriteLine("YearOfPublication " + i + ": ");
+            //    book.YearOfPublication = int.Parse(Console.ReadLine());
+
+            //    Console.WriteLine("ISBN " + i + ": ");
+            //    book.ISBN = Console.ReadLine();
+            //    books.Add(book);
+            //}
+            //foreach (var book in books)
+            //{
+            //    Console.WriteLine("PrintBookInfo: ");
+            //    book.PrintBookInfo();
+            //}
+
+            //Console.WriteLine("Enter Number Garages: ");
+            //List<Car> garage = new List<Car>();
+            //int nCar = int.Parse(Console.ReadLine());
+            //for(int i = 1; i<nCar+1; i++) 
+            //{
+            //    Car car = new Car();
+
+            //    Console.WriteLine("VehicleName " + i + ": ");
+            //    car.VehicleName = Console.ReadLine();
+
+            //    Console.WriteLine("EngineNumber " + i + ": ");
+            //    car.EngineNumber = Console.ReadLine();
+
+            //    Console.WriteLine("Manufacturer " + i + ": ");
+            //    car.Manufacturer = Console.ReadLine();
+
+            //    Console.WriteLine("YearOfManufacture " + i + ": ");
+            //    car.YearOfManufacture = int.Parse(Console.ReadLine());
+
+            //    Console.WriteLine("Quantity " + i + ": ");
+            //    car.Quantity = int.Parse(Console.ReadLine());
+            //    garage.Add(car);
+            //}
+            //Console.WriteLine("Cars in the Garage:");
+            //foreach (Car car in garage)
+            //{
+            //    car.PrintCarInfo();
+            //    Console.WriteLine();
+            //}
+            //Console.WriteLine("Toyota Cars in the Garage:");
+            //foreach (Car car in garage)
+            //{
+            //    if (car.Manufacturer.Equals("Toyota", StringComparison.OrdinalIgnoreCase))
+            //    {
+            //        Console.WriteLine(car.VehicleName);
+            //    }
+            //}
+
+            Console.WriteLine("Enter Number supermarketGoods: ");
+            List<Good> supermarketGoods = new List<Good>();
+            int nGoods = int.Parse(Console.ReadLine());
+            for (int i = 1; i<nGoods+1,i++)
             {
-                Book book = new Book();
+                Good goods = new Good();
+                Console.WriteLine("Code " + i + ": ");
+                goods.Code = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("Title " + i + ": ");
-                book.Title = Console.ReadLine();
+                Console.WriteLine("GoodName " + i + ": ");
+                goods.GoodName = Console.ReadLine();
 
-                Console.WriteLine("Author " + i + ": ");
-                book.Author = Console.ReadLine();
+                Console.WriteLine("Quantity " + i + ": ");
+                goods.Quantity = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("Publisher " + i + ": ");
-                book.Publisher = Console.ReadLine();
+                Console.WriteLine("UnitPrice " + i + ": ");
+                goods.UnitPrice = decimal.Parse(Console.ReadLine());
 
-                Console.WriteLine("YearOfPublication " + i + ": ");
-                book.YearOfPublication = int.Parse(Console.ReadLine());
-
-                Console.WriteLine("ISBN " + i + ": ");
-                book.ISBN = Console.ReadLine();
-                books.Add(book);
+                supermarketGoods.Add(goods);
             }
-            foreach (var book in books)
+
+            Console.WriteLine("Goods in the Supermarket:");
+            foreach (Good good in supermarketGoods)
             {
-                Console.WriteLine("PrintBookInfo: ");
-                book.PrintBookInfo();
-            }    
-                
+                good.PrintGoodInfo();
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("Goods with Quantity Less Than 5 for Import:");
+            foreach (Good good in supermarketGoods)
+            {
+                if (good.Quantity < 5)
+                {
+                    Console.WriteLine(good.GoodName);
+                }
+            }
+
             Console.ReadKey();
             Console.ReadLine();
         }
