@@ -14,13 +14,41 @@ namespace Project_A
         public decimal Price { get; set; }
         public int Quantity { get; set; }
     }
+    class ProductOrder
+    {
+        public int OrderCode { get; set; }
+        public int ProductCode { get; set; }
+        public int Quantity { get; set; }
+        public decimal Money { get; set; }
+    }
+    interface IProductOrder
+    {
+        void PlaceProductOrder(ProductOrder productOrder);
+        void ShowOrderList();
+    }
+    class ProductOrderManager : IProductOrder
+    {
+        private List<ProductOrder> productOrders = new List<ProductOrder>();
+
+        public void PlaceProductOrder(ProductOrder productOrder)
+        {
+            productOrders.Add(productOrder);
+        }
+        public void ShowOrderList()
+        {
+            foreach (ProductOrder order in productOrders)
+            {
+                Console.WriteLine($"Product Code: {order.ProductCode}, Quantity: {order.Quantity}, Total Amount: {order.Money:C}");
+            }
+        }
+    }
     interface IProductManager
     {
         void ProductInsert(Product product);
         void ProductUpdate(int id, Product updatedProduct);
         void ProductDelete(int id);
         void ShowProductList();
-        Product GetProductById(int idToUpdate);
+        Product GetProductById(int id);
         void SaveToFile(string fileName);
     }
     class ProductManager : IProductManager

@@ -591,6 +591,7 @@ namespace Project_A
             //}
 
             IProductManager productManager = new ProductManager();
+            IProductOrder productOrderManager = new ProductOrderManager();
             while (true)
             {
                 Console.WriteLine("1. Nhập vào thông tin danh sách các sản phẩm");
@@ -598,6 +599,7 @@ namespace Project_A
                 Console.WriteLine("3. Update thông tin sản phẩm với id sản phẩm nhập từ bàn phím");
                 Console.WriteLine("4. Xóa sản phẩm với id sản phẩm nhập từ bàn phím");
                 Console.WriteLine("5. Ghi danh sách sản phẩm xuống file text");
+                Console.WriteLine("6. Thực hiện mua một sản phẩm (mua trên 5 sản phẩm sẽ được chiết khấu 5%) và hiển thị danh sách đơn hàng");
                 Console.WriteLine("0. Thoát");
                 Console.Write("Vui lòng chọn: ");
                 int choice = int.Parse(Console.ReadLine());
@@ -652,6 +654,32 @@ namespace Project_A
                         Console.Write("Enter File Name to Save: ");
                         string fileName = Console.ReadLine();
                         productManager.SaveToFile(fileName);
+                        break;
+
+                    case 6:
+                        Console.Write("Enter Product Code to Place Order: ");
+                        int productCode = int.Parse(Console.ReadLine());
+                        Product product = productManager.GetProductById(productCode);
+                        if (product != null)
+                        {
+                            Console.Write("Enter Quantity: ");
+                            int orderQuantity = int.Parse(Console.ReadLine());
+                            decimal totalAmount = orderQuantity >= 5 ? product.Price * orderQuantity * 0.95M : product.Price * orderQuantity;
+
+                            ProductOrder order = new ProductOrder
+                            {
+                                ProductCode = productCode,
+                                Quantity = orderQuantity,
+                                Money = totalAmount
+                            };
+
+                            productOrderManager.PlaceProductOrder(order);
+                            productOrderManager.ShowOrderList();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Product not found.");
+                        }
                         break;
                     case 0: return;
                     default:
