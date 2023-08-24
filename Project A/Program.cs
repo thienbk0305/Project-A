@@ -494,7 +494,7 @@ namespace Project_A
             Console.WriteLine("Enter Number supermarketGoods: ");
             List<Good> supermarketGoods = new List<Good>();
             int nGoods = int.Parse(Console.ReadLine());
-            for (int i = 1; i<nGoods+1,i++)
+            for (int i = 1; i<nGoods+1; i++)
             {
                 Good goods = new Good();
                 Console.WriteLine("Code " + i + ": ");
