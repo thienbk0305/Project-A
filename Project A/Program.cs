@@ -590,103 +590,143 @@ namespace Project_A
             //    }
             //}
 
-            IProductManager productManager = new ProductManager();
-            IProductOrder productOrderManager = new ProductOrderManager();
-            while (true)
+            //IProductManager productManager = new ProductManager();
+            //IProductOrder productOrderManager = new ProductOrderManager();
+            //while (true)
+            //{
+            //    Console.WriteLine("1. Nhập vào thông tin danh sách các sản phẩm");
+            //    Console.WriteLine("2. Hiển thị danh sách sản phẩm");
+            //    Console.WriteLine("3. Update thông tin sản phẩm với id sản phẩm nhập từ bàn phím");
+            //    Console.WriteLine("4. Xóa sản phẩm với id sản phẩm nhập từ bàn phím");
+            //    Console.WriteLine("5. Ghi danh sách sản phẩm xuống file text");
+            //    Console.WriteLine("6. Thực hiện mua một sản phẩm (mua trên 5 sản phẩm sẽ được chiết khấu 5%) và hiển thị danh sách đơn hàng");
+            //    Console.WriteLine("0. Thoát");
+            //    Console.Write("Vui lòng chọn: ");
+            //    int choice = int.Parse(Console.ReadLine());
+            //    switch (choice)
+            //    {
+            //        case 1:
+            //            Product newProduct = new Product();
+            //            Console.Write("Enter Id: ");
+            //            newProduct.Id = int.Parse(Console.ReadLine());
+            //            Console.Write("Enter Product Name: ");
+            //            newProduct.Name = Console.ReadLine();
+            //            Console.Write("Enter Product Price: ");
+            //            newProduct.Price = decimal.Parse(Console.ReadLine());
+            //            Console.Write("Enter Product Quantity: ");
+            //            newProduct.Quantity = int.Parse(Console.ReadLine());
+
+            //            productManager.ProductInsert(newProduct);
+            //            break;
+            //        case 2:
+            //            productManager.ShowProductList();
+            //            break;
+            //        case 3:
+            //            Console.Write("Enter Product ID to Update: ");
+            //            int idToUpdate = int.Parse(Console.ReadLine());
+
+            //            Product productToUpdate = productManager.GetProductById(idToUpdate);
+            //            if (productToUpdate != null)
+            //            {
+            //                Console.Write("Enter Updated Product Name: ");
+            //                string updatedName = Console.ReadLine();
+            //                Console.Write("Enter Updated Product Price: ");
+            //                decimal updatedPrice = decimal.Parse(Console.ReadLine());
+            //                Console.Write("Enter Updated Product Quantity: ");
+            //                int updatedQuantity = int.Parse(Console.ReadLine());
+
+            //                Product updatedProduct = new Product { Id = productToUpdate.Id, Name = updatedName, Price = updatedPrice, Quantity = updatedQuantity };
+            //                productManager.ProductUpdate(idToUpdate, updatedProduct);
+            //            }
+            //            else
+            //            {
+            //                Console.WriteLine("Product not found.");
+            //            }
+            //            break;
+
+            //        case 4:
+            //            Console.Write("Enter Product ID to Delete: ");
+            //            int idToDelete = int.Parse(Console.ReadLine());
+            //            productManager.ProductDelete(idToDelete);
+            //            break;
+
+            //        case 5:
+            //            Console.Write("Enter File Name to Save: ");
+            //            string fileName = Console.ReadLine();
+            //            productManager.SaveToFile(fileName);
+            //            break;
+
+            //        case 6:
+            //            Console.Write("Enter Product Code to Place Order: ");
+            //            int productCode = int.Parse(Console.ReadLine());
+            //            Product product = productManager.GetProductById(productCode);
+            //            if (product != null)
+            //            {
+            //                Console.Write("Enter Quantity: ");
+            //                int orderQuantity = int.Parse(Console.ReadLine());
+            //                decimal totalAmount = orderQuantity >= 5 ? product.Price * orderQuantity * 0.95M : product.Price * orderQuantity;
+
+            //                ProductOrder order = new ProductOrder
+            //                {
+            //                    ProductCode = productCode,
+            //                    Quantity = orderQuantity,
+            //                    Money = totalAmount
+            //                };
+
+            //                productOrderManager.PlaceProductOrder(order);
+            //                productOrderManager.ShowOrderList();
+            //            }
+            //            else
+            //            {
+            //                Console.WriteLine("Product not found.");
+            //            }
+            //            break;
+            //        case 0: return;
+            //        default:
+            //            Console.WriteLine("Chọn chưa đúng");
+            //            break;
+            //    }
+            //}
+            
+            Console.Write("Enter number of passengers: ");
+            int n = int.Parse(Console.ReadLine());
+
+            List<Hanhkhach> passengers = new List<Hanhkhach>();
+            for (int i = 0; i < n; i++)
             {
-                Console.WriteLine("1. Nhập vào thông tin danh sách các sản phẩm");
-                Console.WriteLine("2. Hiển thị danh sách sản phẩm");
-                Console.WriteLine("3. Update thông tin sản phẩm với id sản phẩm nhập từ bàn phím");
-                Console.WriteLine("4. Xóa sản phẩm với id sản phẩm nhập từ bàn phím");
-                Console.WriteLine("5. Ghi danh sách sản phẩm xuống file text");
-                Console.WriteLine("6. Thực hiện mua một sản phẩm (mua trên 5 sản phẩm sẽ được chiết khấu 5%) và hiển thị danh sách đơn hàng");
-                Console.WriteLine("0. Thoát");
-                Console.Write("Vui lòng chọn: ");
-                int choice = int.Parse(Console.ReadLine());
-                switch (choice)
-                {
-                    case 1:
-                        Product newProduct = new Product();
-                        Console.Write("Enter Id: ");
-                        newProduct.Id = int.Parse(Console.ReadLine());
-                        Console.Write("Enter Product Name: ");
-                        newProduct.Name = Console.ReadLine();
-                        Console.Write("Enter Product Price: ");
-                        newProduct.Price = decimal.Parse(Console.ReadLine());
-                        Console.Write("Enter Product Quantity: ");
-                        newProduct.Quantity = int.Parse(Console.ReadLine());
+                Console.WriteLine($"Nhập Thông Tin Hành Khách {i + 1}");
+                Hanhkhach passenger = new Hanhkhach();
+                passenger.Import();
 
-                        productManager.ProductInsert(newProduct);
-                        break;
-                    case 2:
-                        productManager.ShowProductList();
-                        break;
-                    case 3:
-                        Console.Write("Enter Product ID to Update: ");
-                        int idToUpdate = int.Parse(Console.ReadLine());
+                Vemaybay ve = new Vemaybay();
+                ve.Enter();
+                passenger.Ve = ve;
 
-                        Product productToUpdate = productManager.GetProductById(idToUpdate);
-                        if (productToUpdate != null)
-                        {
-                            Console.Write("Enter Updated Product Name: ");
-                            string updatedName = Console.ReadLine();
-                            Console.Write("Enter Updated Product Price: ");
-                            decimal updatedPrice = decimal.Parse(Console.ReadLine());
-                            Console.Write("Enter Updated Product Quantity: ");
-                            int updatedQuantity = int.Parse(Console.ReadLine());
+                Console.Write("Nhập Số Lượng: ");
+                passenger.SoLuong = int.Parse(Console.ReadLine());
 
-                            Product updatedProduct = new Product { Id = productToUpdate.Id, Name = updatedName, Price = updatedPrice, Quantity = updatedQuantity };
-                            productManager.ProductUpdate(idToUpdate, updatedProduct);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Product not found.");
-                        }
-                        break;
-
-                    case 4:
-                        Console.Write("Enter Product ID to Delete: ");
-                        int idToDelete = int.Parse(Console.ReadLine());
-                        productManager.ProductDelete(idToDelete);
-                        break;
-
-                    case 5:
-                        Console.Write("Enter File Name to Save: ");
-                        string fileName = Console.ReadLine();
-                        productManager.SaveToFile(fileName);
-                        break;
-
-                    case 6:
-                        Console.Write("Enter Product Code to Place Order: ");
-                        int productCode = int.Parse(Console.ReadLine());
-                        Product product = productManager.GetProductById(productCode);
-                        if (product != null)
-                        {
-                            Console.Write("Enter Quantity: ");
-                            int orderQuantity = int.Parse(Console.ReadLine());
-                            decimal totalAmount = orderQuantity >= 5 ? product.Price * orderQuantity * 0.95M : product.Price * orderQuantity;
-
-                            ProductOrder order = new ProductOrder
-                            {
-                                ProductCode = productCode,
-                                Quantity = orderQuantity,
-                                Money = totalAmount
-                            };
-
-                            productOrderManager.PlaceProductOrder(order);
-                            productOrderManager.ShowOrderList();
-                        }
-                        else
-                        {
-                            Console.WriteLine("Product not found.");
-                        }
-                        break;
-                    case 0: return;
-                    default:
-                        Console.WriteLine("Chọn chưa đúng");
-                        break;
-                }
+                passengers.Add(passenger);
+                Console.WriteLine();
             }
+
+            Console.WriteLine("Danh Sách Hành KHách:");
+            foreach (Hanhkhach passenger in passengers)
+            {
+                passenger.Export();
+                Console.WriteLine($"Tổng tiền: {passenger.TongTien():C}");
+                Console.WriteLine();
+            }
+
+            passengers.Sort((p1, p2) => p2.TongTien().CompareTo(p1.TongTien()));
+
+            Console.WriteLine("Sắp Xếp Danh Sách Hành Khách (Descending Total Amount):");
+            foreach (Hanhkhach passenger in passengers)
+            {
+                passenger.Export();
+                Console.WriteLine($"Total Amount Payable: {passenger.TongTien():C}");
+                Console.WriteLine();
+            }
+            Console.ReadKey();
 
         }
     }
