@@ -21,7 +21,7 @@ namespace Project_A
             GiaVe = decimal.Parse(Console.ReadLine());
         }
 
-        public void Xuat()
+        public void Print()
         {
             Console.WriteLine($"Tên chuyến bay: {TenChuyen}");
             Console.WriteLine($"Ngày Bay: {NgayBay}");

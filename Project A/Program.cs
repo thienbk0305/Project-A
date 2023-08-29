@@ -688,7 +688,7 @@ namespace Project_A
             //    }
             //}
             
-            Console.Write("Enter number of passengers: ");
+            Console.Write("Nhập Số Lượng Hành Khách: ");
             int n = int.Parse(Console.ReadLine());
 
             List<Hanhkhach> passengers = new List<Hanhkhach>();
@@ -696,15 +696,7 @@ namespace Project_A
             {
                 Console.WriteLine($"Nhập Thông Tin Hành Khách {i + 1}");
                 Hanhkhach passenger = new Hanhkhach();
-                passenger.Import();
-
-                Vemaybay ve = new Vemaybay();
-                ve.Enter();
-                passenger.Ve = ve;
-
-                Console.Write("Nhập Số Lượng: ");
-                passenger.SoLuong = int.Parse(Console.ReadLine());
-
+                passenger.Enter_HK();
                 passengers.Add(passenger);
                 Console.WriteLine();
             }
@@ -712,18 +704,18 @@ namespace Project_A
             Console.WriteLine("Danh Sách Hành KHách:");
             foreach (Hanhkhach passenger in passengers)
             {
-                passenger.Export();
+                passenger.Print_HK();
                 Console.WriteLine($"Tổng tiền: {passenger.TongTien():C}");
                 Console.WriteLine();
             }
 
             passengers.Sort((p1, p2) => p2.TongTien().CompareTo(p1.TongTien()));
 
-            Console.WriteLine("Sắp Xếp Danh Sách Hành Khách (Descending Total Amount):");
+            Console.WriteLine("Sắp Xếp Danh Sách Hành Khách (Giảm Dần Của Tổng Tiền):");
             foreach (Hanhkhach passenger in passengers)
             {
-                passenger.Export();
-                Console.WriteLine($"Total Amount Payable: {passenger.TongTien():C}");
+                passenger.Print_HK();
+                Console.WriteLine($"Tổng Số Tiền: {passenger.TongTien():C}");
                 Console.WriteLine();
             }
             Console.ReadKey();

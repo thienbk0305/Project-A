@@ -11,13 +11,23 @@ namespace Project_A
             public Vemaybay Ve { get; set; }
             public int SoLuong { get; set; }
 
-            public void Export_HK()
+        public void Enter_HK()
+        {
+            base.Enter();
+
+            Console.Write("Nhập Số Lượng Vé: ");
+            SoLuong = int.Parse(Console.ReadLine());
+
+            Ve = new Vemaybay();
+            Ve.Enter();
+        }
+        public void Print_HK()
             {
                 Console.WriteLine("Thông Tin Hành Khách:");
-                base.Export();
+                base.Print();
                 Console.WriteLine($"Số lượng: {SoLuong}");
-                Console.WriteLine("Ve May Bay Information:");
-                Ve.Xuat();
+                Console.WriteLine("Thông Tin Vé Máy Bay:");
+                Ve.Print();
             }
 
             public decimal TongTien()

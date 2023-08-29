@@ -11,7 +11,7 @@ namespace Project_A
         public string HoTen { get; set; }
         public string GioiTinh { get; set; }
         public int Tuoi { get; set; }
-        public void Import()
+        public void Enter()
         {
             Console.Write("Nhập Họ Tên: ");
             HoTen = Console.ReadLine();
@@ -21,7 +21,7 @@ namespace Project_A
             Tuoi = int.Parse(Console.ReadLine());
         }
 
-        public void Export()
+        public void Print()
         {
             Console.WriteLine($"Họ Tên: {HoTen}");
             Console.WriteLine($"Giới Tính: {GioiTinh}");
