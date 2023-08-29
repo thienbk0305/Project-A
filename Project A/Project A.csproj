@@ -48,6 +48,7 @@
     <Compile Include="Car.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeManager.cs" />
+    <Compile Include="Employee_1.cs" />
     <Compile Include="Good.cs" />
     <Compile Include="Hanhkhach.cs" />
     <Compile Include="Item.cs" />
