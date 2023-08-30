@@ -113,9 +113,10 @@ namespace Project_A
         }
         static void Main(string[] args)
         {
-            Console.OutputEncoding = Encoding.UTF8; // Set the console's encoding to UTF-8
-                                                    //Console.WriteLine("--------------------------------------------------------");
-                                                    //Console.WriteLine("ProductNumber:");
+            Console.OutputEncoding = Encoding.UTF8;
+            // Set the console's encoding to UTF-8
+            //Console.WriteLine("--------------------------------------------------------");
+            //Console.WriteLine("ProductNumber:");
 
             //var n = Convert.ToInt32(Console.ReadLine());
             //var structProd = new Product();
@@ -720,99 +721,128 @@ namespace Project_A
             //    Console.WriteLine();
             //}
 
-            IEmployeeManager_1 employeeManager = new EmployeeManager_1();
-            while (true)
+            //IEmployeeManager_1 employeeManager = new EmployeeManager_1();
+            //while (true)
+            //{
+            //    Console.WriteLine("1. Thêm nhân viên");
+            //    Console.WriteLine("2. Cập nhật thông tin nhân viên bởi ID");
+            //    Console.WriteLine("3. Xóa nhân viên bởi ID");
+            //    Console.WriteLine("4. Tìm kiếm nhân viên theo tên");
+            //    Console.WriteLine("5. Thoát");
+            //    Console.Write("Vui lòng chọn: ");
+            //    int choice = int.Parse(Console.ReadLine());
+            //    switch (choice)
+            //    {
+            //        case 1:
+            //            Console.Write("Nhập Tên Nhân Viên: ");
+            //            string Ten = Console.ReadLine();
+            //            Console.Write("Nhập Giới Tính: ");
+            //            string GioiTinh = Console.ReadLine();
+            //            Console.Write("Nhập Tuổi: ");
+            //            int Tuoi = int.Parse(Console.ReadLine());
+            //            Console.Write("Nhập Lương Căn Bản: ");
+            //            decimal LuongCanBan = decimal.Parse(Console.ReadLine());
+            //            Console.Write("Nhập Phụ Cấp: ");
+            //            decimal PhuCap = decimal.Parse(Console.ReadLine());
+
+            //            Employee_1 newEmployee = new Employee_1
+            //            {
+            //                Id = employeeManager.GenerateRandomId(),
+            //                Ten = Ten,
+            //                GioiTinh = GioiTinh,
+            //                Tuoi = Tuoi,
+            //                LuongCanBan = LuongCanBan,
+            //                PhuCap = PhuCap
+            //            };
+
+            //            employeeManager.AddEmployee(newEmployee);
+            //            employeeManager.ShowEmployeeList();
+            //            break;
+            //        case 2:
+            //            Console.Write("Cập nhật thông tin nhân viên bởi ID: ");
+            //            string idToUpdate = Console.ReadLine();
+
+            //            Employee_1 employeeToUpdate = employeeManager.GetEmployeeById(idToUpdate);
+            //            if (employeeToUpdate != null)
+            //            {
+            //                Console.Write("Nhập Tên Nhân Viên: ");
+            //                string updatedName = Console.ReadLine();
+            //                Console.Write("Nhập Giới Tính: ");
+            //                string updateGender = Console.ReadLine();
+            //                Console.Write("Nhập Tuổi: ");
+            //                int updateAge = int.Parse(Console.ReadLine());
+
+            //                Employee_1 updatedEmployee = new Employee_1 { Id = employeeToUpdate.Id, Ten = updatedName, GioiTinh = updateGender, Tuoi = updateAge };
+            //                employeeManager.UpdateEmployee(idToUpdate, updatedEmployee);
+
+            //                List<Employee_1> employees = new List<Employee_1>();
+            //                foreach (Employee_1 emp in employees)
+            //                {
+            //                    Console.WriteLine($"ID: {emp.Id}, Tên: {emp.Ten}, GioiTinh: {emp.GioiTinh}, Tuổi: {emp.Tuoi}");
+            //                }
+            //            }
+            //            else
+            //            {
+            //                Console.WriteLine("Không Tìm Thấy Nhân Viên Này");
+            //            }
+            //            break;
+            //        case 3:
+            //            Console.Write("Xóa nhân viên bởi ID: ");
+            //            string idToDelete = Console.ReadLine();
+            //            employeeManager.DeleteEmployee(idToDelete);
+            //            break;
+            //        case 4:
+            //            Console.Write("Tìm kiếm nhân viên theo tên: ");
+            //            string searchName = Console.ReadLine();
+
+            //            List<Employee_1> searchResults = employeeManager.SearchEmployeesByName(searchName);
+            //            if (searchResults.Count > 0)
+            //            {
+            //                foreach (Employee_1 emp in searchResults)
+            //                {
+            //                    Console.WriteLine($"Id: {emp.Id}, Tên: {emp.Ten}, Tổng Lương: {emp.TongLuong:C}");
+            //                }
+            //            }
+            //            else
+            //            {
+            //                Console.WriteLine("Không Tìm Thấy");
+            //            }
+            //            break;
+            //        default:
+            //            Console.WriteLine("Chọn Chưa Đúng");
+            //            break;
+            //    }
+            //    Console.ReadKey();
+            //}
+            Console.Write("Nhập Số Lượng Khách Hàng: ");
+            int n = int.Parse(Console.ReadLine());
+
+            List<KhachHang> customers = new List<KhachHang>();
+
+            for (int i = 0; i < n; i++)
             {
-                Console.WriteLine("1. Thêm nhân viên");
-                Console.WriteLine("2. Cập nhật thông tin nhân viên bởi ID");
-                Console.WriteLine("3. Xóa nhân viên bởi ID");
-                Console.WriteLine("4. Tìm kiếm nhân viên theo tên");
-                Console.WriteLine("5. Thoát");
-                Console.Write("Vui lòng chọn: ");
-                int choice = int.Parse(Console.ReadLine());
-                switch (choice)
-                {
-                    case 1:
-                        Console.Write("Nhập Tên Nhân Viên: ");
-                        string Ten = Console.ReadLine();
-                        Console.Write("Nhập Giới Tính: ");
-                        string GioiTinh = Console.ReadLine();
-                        Console.Write("Nhập Tuổi: ");
-                        int Tuoi = int.Parse(Console.ReadLine());
-                        Console.Write("Nhập Lương Căn Bản: ");
-                        decimal LuongCanBan = decimal.Parse(Console.ReadLine());
-                        Console.Write("Nhập Phụ Cấp: ");
-                        decimal PhuCap = decimal.Parse(Console.ReadLine());
-
-                        Employee_1 newEmployee = new Employee_1
-                        {
-                            Id = employeeManager.GenerateRandomId(),
-                            Ten = Ten,
-                            GioiTinh = GioiTinh,
-                            Tuoi = Tuoi,
-                            LuongCanBan = LuongCanBan,
-                            PhuCap = PhuCap
-                        };
-
-                        employeeManager.AddEmployee(newEmployee);
-                        employeeManager.ShowEmployeeList();
-                        break;
-                    case 2:
-                        Console.Write("Cập nhật thông tin nhân viên bởi ID: ");
-                        string idToUpdate = Console.ReadLine();
-
-                        Employee_1 employeeToUpdate = employeeManager.GetEmployeeById(idToUpdate);
-                        if (employeeToUpdate != null)
-                        {
-                            Console.Write("Nhập Tên Nhân Viên: ");
-                            string updatedName = Console.ReadLine();
-                            Console.Write("Nhập Giới Tính: ");
-                            string updateGender = Console.ReadLine();
-                            Console.Write("Nhập Tuổi: ");
-                            int updateAge = int.Parse(Console.ReadLine());
-
-                            Employee_1 updatedEmployee = new Employee_1 { Id = employeeToUpdate.Id, Ten = updatedName, GioiTinh = updateGender, Tuoi = updateAge };
-                            employeeManager.UpdateEmployee(idToUpdate, updatedEmployee);
-
-                            List<Employee_1> employees = new List<Employee_1>();
-                            foreach (Employee_1 emp in employees)
-                            {
-                                Console.WriteLine($"ID: {emp.Id}, Tên: {emp.Ten}, GioiTinh: {emp.GioiTinh}, Tuổi: {emp.Tuoi}");
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("Không Tìm Thấy Nhân Viên Này");
-                        }
-                        break;
-                    case 3:
-                        Console.Write("Xóa nhân viên bởi ID: ");
-                        string idToDelete = Console.ReadLine();
-                        employeeManager.DeleteEmployee(idToDelete);
-                        break;
-                    case 4:
-                        Console.Write("Tìm kiếm nhân viên theo tên: ");
-                        string searchName = Console.ReadLine();
-
-                        List<Employee_1> searchResults = employeeManager.SearchEmployeesByName(searchName);
-                        if (searchResults.Count > 0)
-                        {
-                            foreach (Employee_1 emp in searchResults)
-                            {
-                                Console.WriteLine($"Id: {emp.Id}, Tên: {emp.Ten}, Tổng Lương: {emp.TongLuong:C}");
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("Không Tìm Thấy");
-                        }
-                        break;
-                    default:
-                        Console.WriteLine("Chọn Chưa Đúng");
-                        break;
-                }
-                Console.ReadKey();
+                Console.WriteLine($"Nhập Thông Tin KH thứ  {i + 1}:");
+                KhachHang customer = new KhachHang();
+                customer.Enter();
+                customers.Add(customer);
             }
+
+            Console.WriteLine("Danh Sách KH:");
+            foreach (KhachHang customer in customers)
+            {
+                customer.Print();
+                Console.WriteLine();
+            }
+
+            customers.Sort((c1, c2) => c2.TongTien().CompareTo(c1.TongTien()));
+
+            Console.WriteLine("Danh Sách KH Theo Tổng Giao Dịch Giảm Dần:");
+            foreach (KhachHang customer in customers)
+            {
+                customer.Print();
+                Console.WriteLine();
+            }
+            Console.ReadKey();
         }
     }
 }
