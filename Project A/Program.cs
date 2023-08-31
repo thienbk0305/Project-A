@@ -827,7 +827,7 @@ namespace Project_A
                 customers.Add(customer);
             }
 
-            Console.WriteLine("Danh Sách KH:");
+            Console.WriteLine("\n-----------Danh Sách KH-----------:");
             foreach (KhachHang customer in customers)
             {
                 customer.Print();
@@ -836,7 +836,7 @@ namespace Project_A
 
             customers.Sort((c1, c2) => c2.TongTien().CompareTo(c1.TongTien()));
 
-            Console.WriteLine("Danh Sách KH Theo Tổng Giao Dịch Giảm Dần:");
+            Console.WriteLine("\n-----------Danh Sách KH Theo Tổng Giao Dịch Giảm Dần-----------:");
             foreach (KhachHang customer in customers)
             {
                 customer.Print();

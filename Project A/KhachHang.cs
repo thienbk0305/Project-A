@@ -9,7 +9,7 @@ namespace Project_A
     public class KhachHang : Nguoi_1
     {
         public List<GiaoDich> GiaoDich { get; set; } = new List<GiaoDich>();
-
+        Console.OutputEncoding = Encoding.UTF8;
         public override void Enter()
         {
             base.Enter();
