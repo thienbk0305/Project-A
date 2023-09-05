@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_A.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -814,33 +815,47 @@ namespace Project_A
             //    }
             //    Console.ReadKey();
             //}
-            Console.Write("Nhập Số Lượng Khách Hàng: ");
-            int n = int.Parse(Console.ReadLine());
+            //Console.Write("Nhập Số Lượng Khách Hàng: ");
+            //int n = int.Parse(Console.ReadLine());
 
-            List<KhachHang> customers = new List<KhachHang>();
+            //List<KhachHang> customers = new List<KhachHang>();
 
-            for (int i = 0; i < n; i++)
+            //for (int i = 0; i < n; i++)
+            //{
+            //    Console.WriteLine($"Nhập Thông Tin KH thứ  {i + 1}:");
+            //    KhachHang customer = new KhachHang();
+            //    customer.Enter();
+            //    customers.Add(customer);
+            //}
+
+            //Console.WriteLine("\n-----------Danh Sách KH-----------:");
+            //foreach (KhachHang customer in customers)
+            //{
+            //    customer.Print();
+            //    Console.WriteLine();
+            //}
+
+            //customers.Sort((c1, c2) => c2.TongTien().CompareTo(c1.TongTien()));
+
+            //Console.WriteLine("\n-----------Danh Sách KH Theo Tổng Giao Dịch Giảm Dần-----------:");
+            //foreach (KhachHang customer in customers)
+            //{
+            //    customer.Print();
+            //    Console.WriteLine();
+            //}
+
+            var listSinhVien = DbHelper.Sinhvien_GetList();
+
+            if (listSinhVien != null && listSinhVien.Count > 0)
             {
-                Console.WriteLine($"Nhập Thông Tin KH thứ  {i + 1}:");
-                KhachHang customer = new KhachHang();
-                customer.Enter();
-                customers.Add(customer);
-            }
-
-            Console.WriteLine("\n-----------Danh Sách KH-----------:");
-            foreach (KhachHang customer in customers)
-            {
-                customer.Print();
-                Console.WriteLine();
-            }
-
-            customers.Sort((c1, c2) => c2.TongTien().CompareTo(c1.TongTien()));
-
-            Console.WriteLine("\n-----------Danh Sách KH Theo Tổng Giao Dịch Giảm Dần-----------:");
-            foreach (KhachHang customer in customers)
-            {
-                customer.Print();
-                Console.WriteLine();
+                foreach (var item in listSinhVien)
+                {
+                    Console.WriteLine(" item masv: {0}", item.masv);
+                    Console.WriteLine(" item hotensv: {0}", item.hotensv);
+                    Console.WriteLine(" item makhoa: {0}", item.makhoa);
+                    Console.WriteLine(" item namsinh: {0}", item.namsinh);
+                    Console.WriteLine(" item quequan: {0}", item.quequan);
+                }
             }
             Console.ReadKey();
         }
