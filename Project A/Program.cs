@@ -844,7 +844,24 @@ namespace Project_A
             //    Console.WriteLine();
             //}
 
-            var listSinhVien = DbHelper.Sinhvien_GetList();
+            var sinhvienManager = new Project_A.SinhVienManager.SinhVienManager();
+            var sinhvienBase = new Project_A.SinhVienManager.SinhVienDataBase();
+
+            sinhvienBase.hotensv = "Student C";
+            sinhvienBase.makhoa = "K01";
+            sinhvienBase.namsinh = 2000;
+            sinhvienBase.quequan = "City C";
+
+            var result = sinhvienManager.ProductInsert(sinhvienBase);
+
+            if (result <= 0)
+            {
+                Console.WriteLine("Thêm mới thất bại!");
+                return;
+
+            }
+
+            var listSinhVien = sinhvienManager.SinhvienGetList(201);
 
             if (listSinhVien != null && listSinhVien.Count > 0)
             {
