@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Blog";
+}
+
+@model List<WebDemoMVC.Models.BlogModels>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <h1>Blog</h1>
+
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Bài viết</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Published Date</th>
+                        <th>Catagory Name</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var post in Model)
+                    {
+                        <tr>
+                            <td>@post.Title</td>
+                            <td>@post.Content</td>
+                            <td>@post.PublishedDate</td>
+                            <td>@post.CatagoryName</td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+       
+    </div>
+</body>
+</html>
