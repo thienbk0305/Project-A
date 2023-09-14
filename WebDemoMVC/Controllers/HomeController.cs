@@ -1,45 +1,232 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Services.Description;
 using WebDemoMVC.EntitiesFrameWork;
 using WebDemoMVC.EntitiesFrameWork.Entites;
-using WebDemoMVC.Models;
 
 namespace WebDemoMVC.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index(string name)
         {
-            var model = new List<StudentModels>();
+            var BlogManger = new WebDemoMVC.CategoryManager.CategoryManager();
+            var PostManger = new WebDemoMVC.PostManager.PostManager();
+            var model = new List<Category>();
 
-            var dbContext = new StudentDbContext();
+            //var cate = new Category
+            //{
+            //    CategoryId = 1,
+            //    CategoryName = "Điện tử",
+            //    CategoryDescription = "Hàng Điện tử"
+            //};
 
-            //dbContext.student.Add(new EntitiesFrameWork.Entites.Student { Id = 10, Name = "abc_def14" });
-            //dbContext.student.Add(new EntitiesFrameWork.Entites.Student { Id = 11, Name = "abc_def15" });
-            //dbContext.student.Add(new EntitiesFrameWork.Entites.Student { Id = 12, Name = "abc_def16" });
-            //dbContext.SaveChanges();
+            //var result = BlogManger.Category_InsertUpdate(cate, 0);
 
+            //if (result > 0)
+            //{
+            //    // xử lý thông báo
+            //    model = BlogManger.Categories_GetList(0, "").ToList();
+            //}
 
+            model = BlogManger.Categories_GetList(0, "").ToList();
 
-            var list_student = dbContext.student.ToList();
-            if (list_student.Count > 0)
-            {
-                for (int i = 0; i < list_student.Count; i++)
-                {
-                    var item = list_student[i];
-                    model.Add(new StudentModels { Id = item.Id, Name = item.Name });
-                }
-            }
+            //var posts = new Post
+            //{
+            //    PostId = 1,
+            //    PostName = "This is the content of post 1",
+            //    CategoryId = 3,
+            //    CreateDate=DateTime.Now
+            //};
+            //var result = PostManger.Post_InsertUpdate(posts, 0);
 
+            //if (result > 0)
+            //{
+            //    // xử lý thông báo
+            //    posts = PostManger.Post_GetList(0, "").ToList();
+            //    ViewData["Posts"] = posts;
+            //}
+
+            var posts = new List<Post>();
+            posts = PostManger.Post_GetList(0, "").ToList();
+            ViewData["Posts"] = posts;
+            // Trả về dữ liệu cho View
 
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult Insert(Category model)
+        {
+            try
+            {
+                var BlogManger = new WebDemoMVC.CategoryManager.CategoryManager();
+
+                var cate = new Category
+                {
+                    CategoryId = model.CategoryId,
+                    CategoryName = model.CategoryName
+                };
+
+                var result = BlogManger.Category_InsertUpdate(cate, 0);
+                if (result > 0)
+                {
+                    return Json(new { code = 1, msg = "Thêm mới thành công" });
+                }
+                else
+                {
+                    return Json(new { code = 0, msg = "Thêm mới thất bại" });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { code = -99, msg = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult InsertPost(Post model)
+        {
+            try
+            {
+                var BlogManger = new WebDemoMVC.PostManager.PostManager();
+
+                var post = new Post
+                {
+                    PostId = model.PostId,
+                    PostName = model.PostName,
+                    CategoryId = 3,
+                    CreateDate = DateTime.Now
+                };
+
+                var result = BlogManger.Post_InsertUpdate(post, 0);
+                if (result > 0)
+                {
+                    return Json(new { code = 1, msg = "Thêm mới thành công" });
+                }
+                else
+                {
+                    return Json(new { code = 0, msg = "Thêm mới thất bại" });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { code = -99, msg = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Update(Category model)
+        {
+            try
+            {
+                var BlogManger = new WebDemoMVC.CategoryManager.CategoryManager();
+
+                var cate = new Category
+                {
+                    CategoryId = model.CategoryId,
+                    CategoryName = model.CategoryName
+                };
+
+                var result = BlogManger.Category_InsertUpdate(cate, 1);
+                if (result > 0)
+                {
+                    return Json(new { code = 1, msg = "Chỉnh sửa thành công" });
+                }
+                else
+                {
+                    return Json(new { code = 0, msg = "Chỉnh sửa thất bại" });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { code = -99, msg = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult UpdatePost(Post model)
+        {
+            try
+            {
+                var BlogManger = new WebDemoMVC.PostManager.PostManager();
+
+                var post = new Post
+                {
+                    PostId = model.PostId,
+                    PostName = model.PostName
+                };
+
+                var result = BlogManger.Post_InsertUpdate(post, 1);
+                if (result > 0)
+                {
+                    return Json(new { code = 1, msg = "Chỉnh sửa thành công" });
+                }
+                else
+                {
+                    return Json(new { code = 0, msg = "Chỉnh sửa thất bại" });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { code = -99, msg = ex.Message });
+            }
+        }
+
+        public JsonResult Delete(int id)
+        {
+            try
+            {
+                var BlogManger = new WebDemoMVC.CategoryManager.CategoryManager();
+
+
+                var result = BlogManger.Category_Delete(Convert.ToInt32(id));
+                if (result > 0)
+                {
+                    return Json(new { code = 1, msg = "Xóa mới thành công" });
+                }
+                else
+                {
+                    return Json(new { code = 0, msg = "Xóa mới thất bại" });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { code = -99, msg = ex.Message });
+            }
+        }
+
+        public JsonResult DeletePost(int id)
+        {
+            try
+            {
+                var BlogManger = new WebDemoMVC.PostManager.PostManager();
+
+
+                var result = BlogManger.Post_Delete(Convert.ToInt32(id));
+                if (result > 0)
+                {
+                    return Json(new { code = 1, msg = "Xóa mới thành công" });
+                }
+                else
+                {
+                    return Json(new { code = 0, msg = "Xóa mới thất bại" });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { code = -99, msg = ex.Message });
+            }
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -52,75 +239,6 @@ namespace WebDemoMVC.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-        public ActionResult Blog()
-        {
-            var modelBlog = new List<BlogModels>();
-            var dbContextBlog = new BlogContext();
-
-            ////Create some categories data
-            //dbContextBlog.Categories.Add(new EntitiesFrameWork.Entites.Category
-            //{
-            //    Name = "Web Development"
-            //});
-            //dbContextBlog.Categories.Add(new EntitiesFrameWork.Entites.Category
-            //{
-            //    Name = "Mobile Development"
-            //});
-            //// Create some posts data
-            //dbContextBlog.Posts.Add(new EntitiesFrameWork.Entites.Post
-            //{
-            //    Title = "How to Build a Website",
-            //    Content = "This post will teach you how to build a website from scratch.",
-            //    PublishedDate = DateTime.Now,
-            //    CategoryId = 1
-            //});
-            //dbContextBlog.Posts.Add(new EntitiesFrameWork.Entites.Post
-            //{
-            //    Title = "How to Develop an App",
-            //    Content = "This post will teach you how to develop an app for mobile devices.",
-            //    PublishedDate = DateTime.Now,
-            //    CategoryId = 2
-            //});
-            
-            //remove posts data
-            var post = dbContextBlog.Posts.FirstOrDefault(p => p.Id == 2);
-         
-            //if (post != null)
-            //{
-            //    dbContextBlog.Posts.Remove(post);
-            //    dbContextBlog.SaveChanges();
-            //}
-
-            //update posts data
-            if (post != null)
-            {
-                post.Title = "New Title";
-                post.Content = "New Content";
-
-                dbContextBlog.SaveChanges();
-            }
-            var posts = dbContextBlog.Posts.ToList();
-
-            if (posts.Count > 0)
-            {
-                for (int i = 0; i < posts.Count; i++)
-                {
-                    var item = posts[i];
-                    modelBlog.Add(new BlogModels { 
-                        Id = item.Id,
-                        Title = item.Title,
-                        Content = item.Content,
-                        PublishedDate = item.PublishedDate,
-                        //CatagoryName = item.CatagoryId.ToString()
-                    });
-                }
-            }
-
-
-            return View(modelBlog);
-
         }
     }
 }

@@ -127,18 +127,22 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CategoryManager\CategoryManager.cs" />
+    <Compile Include="CategoryManager\ICategory.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="EntitiesFrameWork\BlogContext.cs" />
     <Compile Include="EntitiesFrameWork\Entites\Category.cs" />
     <Compile Include="EntitiesFrameWork\Entites\Post.cs" />
-    <Compile Include="EntitiesFrameWork\Entites\Student.cs" />
-    <Compile Include="EntitiesFrameWork\StudentDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309140437571_DBLog.cs" />
+    <Compile Include="Migrations\202309140437571_DBLog.designer.cs">
+      <DependentUpon>202309140437571_DBLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\BlogModels.cs" />
-    <Compile Include="Models\StudentModels.cs" />
+    <Compile Include="PostManager\IPost.cs" />
+    <Compile Include="PostManager\PostManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -223,6 +228,11 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202309140437571_DBLog.resx">
+      <DependentUpon>202309140437571_DBLog.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

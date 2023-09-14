@@ -11,10 +11,10 @@ namespace WebDemoMVC.EntitiesFrameWork
     {
         public BlogContext() : base("ManagerBlog")
         {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<BlogContext,config>(this));
+            
         }
 
-        public DbSet<Post> Posts { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Post> Post { get; set; }
+        public DbSet<Category> Category { get; set; }
     }
 }

@@ -7,11 +7,12 @@ namespace WebDemoMVC.EntitiesFrameWork.Entites
 {
     public class Post
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public DateTime PublishedDate { get; set; }
+        public int PostId { get; set; }
+        public string PostName { get; set; }
+        public DateTime CreateDate { get; set; }
+        public string CreatedUser { get; set; }
+        public string PostImage { get; set; }
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
     }
 }
