@@ -59,35 +59,49 @@ namespace WebDemoMVC.Controllers
             var modelBlog = new List<BlogModels>();
             var dbContextBlog = new BlogContext();
 
-            Create some categories data
-            dbContextBlog.Categories.Add(new EntitiesFrameWork.Entites.Category
-            {
-                Name = "Web Development"
-            });
-            dbContextBlog.Categories.Add(new EntitiesFrameWork.Entites.Category
-            {
-                Name = "Mobile Development"
-            });
-            // Create some posts data
-            dbContextBlog.Posts.Add(new EntitiesFrameWork.Entites.Post
-            {
-                Title = "How to Build a Website",
-                Content = "This post will teach you how to build a website from scratch.",
-                PublishedDate = DateTime.Now,
-                CategoryId = 1
-            });
-            dbContextBlog.Posts.Add(new EntitiesFrameWork.Entites.Post
-            {
-                Title = "How to Develop an App",
-                Content = "This post will teach you how to develop an app for mobile devices.",
-                PublishedDate = DateTime.Now,
-                CategoryId = 2
-            });
+            ////Create some categories data
+            //dbContextBlog.Categories.Add(new EntitiesFrameWork.Entites.Category
+            //{
+            //    Name = "Web Development"
+            //});
+            //dbContextBlog.Categories.Add(new EntitiesFrameWork.Entites.Category
+            //{
+            //    Name = "Mobile Development"
+            //});
+            //// Create some posts data
+            //dbContextBlog.Posts.Add(new EntitiesFrameWork.Entites.Post
+            //{
+            //    Title = "How to Build a Website",
+            //    Content = "This post will teach you how to build a website from scratch.",
+            //    PublishedDate = DateTime.Now,
+            //    CategoryId = 1
+            //});
+            //dbContextBlog.Posts.Add(new EntitiesFrameWork.Entites.Post
+            //{
+            //    Title = "How to Develop an App",
+            //    Content = "This post will teach you how to develop an app for mobile devices.",
+            //    PublishedDate = DateTime.Now,
+            //    CategoryId = 2
+            //});
+            
+            //remove posts data
+            var post = dbContextBlog.Posts.FirstOrDefault(p => p.Id == 2);
+         
+            //if (post != null)
+            //{
+            //    dbContextBlog.Posts.Remove(post);
+            //    dbContextBlog.SaveChanges();
+            //}
 
+            //update posts data
+            if (post != null)
+            {
+                post.Title = "New Title";
+                post.Content = "New Content";
 
+                dbContextBlog.SaveChanges();
+            }
             var posts = dbContextBlog.Posts.ToList();
-
-            dbContextBlog.SaveChanges();
 
             if (posts.Count > 0)
             {

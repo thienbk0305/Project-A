@@ -11,7 +11,7 @@ namespace WebDemoMVC.EntitiesFrameWork
     {
         public BlogContext() : base("ManagerBlog")
         {
-            
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<BlogContext,config>(this));
         }
 
         public DbSet<Post> Posts { get; set; }
