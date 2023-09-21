@@ -26,7 +26,7 @@
         <button type="button" id="btnSearch" class="btn btn-primary btn-block mb-4">Tìm kiếm</button>
 
     </form>
-    @{Html.RenderAction("Search", "Account");}
+    @*@{Html.RenderAction("Search", "Account");}*@
     <div id="search-results">
 
     </div>
@@ -73,19 +73,10 @@
             type: 'GET',
             url: "/Account/Search",
             data: param,
-            dataType: "json",
+            dataType: "html",
             success: function (data) {
-                var accounts = data.accounts;
-                for (var i = 0; i < accounts.length; i++) {
-                    var account = accounts[i];
-
-                    var html = "<div>" +
-                        "<p>Tên tài khoản: <b>" + account.username + "</b></p>" +
-                    "</div>";
-                    
-                    $("#search-results").append(html);
+                $('#search-results').html(data);
                 }
-            }
         });
  
     }
