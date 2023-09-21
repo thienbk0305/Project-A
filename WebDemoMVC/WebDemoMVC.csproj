@@ -129,10 +129,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="CategoryManager\CategoryManager.cs" />
     <Compile Include="CategoryManager\ICategory.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="EntitiesFrameWork\BlogContext.cs" />
     <Compile Include="EntitiesFrameWork\Entites\Category.cs" />
     <Compile Include="EntitiesFrameWork\Entites\Post.cs" />
+    <Compile Include="EntitiesFrameWork\Entites\Account.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -140,10 +142,16 @@
     <Compile Include="Migrations\202309140437571_DBLog.designer.cs">
       <DependentUpon>202309140437571_DBLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309141451564_DBLog1.cs" />
+    <Compile Include="Migrations\202309141451564_DBLog1.designer.cs">
+      <DependentUpon>202309141451564_DBLog1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PostManager\IPost.cs" />
     <Compile Include="PostManager\PostManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AccountManager\IAccount.cs" />
+    <Compile Include="AccountManager\AccountManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -196,7 +204,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Blog.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Account.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -232,6 +241,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202309140437571_DBLog.resx">
       <DependentUpon>202309140437571_DBLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309141451564_DBLog1.resx">
+      <DependentUpon>202309141451564_DBLog1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

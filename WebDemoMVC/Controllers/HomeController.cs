@@ -231,7 +231,7 @@ namespace WebDemoMVC.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            return RedirectToAction("Contact","Home");
         }
 
         public ActionResult Contact()

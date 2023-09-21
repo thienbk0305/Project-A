@@ -16,5 +16,6 @@ namespace WebDemoMVC.EntitiesFrameWork
 
         public DbSet<Post> Post { get; set; }
         public DbSet<Category> Category { get; set; }
+        public DbSet<Account> Account { get; set; }
     }
 }

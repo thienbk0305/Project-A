@@ -1,0 +1,21 @@
+﻿@model List<WebDemoMVC.EntitiesFrameWork.Entites.Account>
+
+<h1>Danh sách tài khoản</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tên tài khoản</th>
+            <th>Ngày đăng ký</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in Model)
+        {
+            <tr>
+                <td>@account.Username</td>
+                <td>@account.CreatedDate</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+
+<body>
+    <div>
+        <form>
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input id="username" class="form-control" />
+                <label class="form-label" for="form2Example1">Username</label>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <input type="password" id="password" class="form-control" />
+                <label class="form-label" for="form2Example2">Password</label>
+            </div>
+
+            <!-- Submit button -->
+            @*<button type="button" id="btnSave" class="btn btn-primary btn-block mb-4">Sign in</button>*@
+            <!-- Register buttons -->
+            <button type="button" id="btnRegister" class="btn btn-primary btn-block mb-4">Register</button>
+            <h1>Danh sách tài khoản</h1>
+           @* @{Html.RenderAction("_AccountsList", "Account")};*@
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    $("#btnRegister").click(function () {
+        AccountInsert();
+    })
+    function AccountInsert() {
+        var username = $("#username").val();
+        var password = $("#password").val();
+
+        var param = {
+            Username: username,
+            Password: password
+        };
+        $.ajax({
+            type: 'POST',
+            url: "/Account/Insert",
+            data: param,
+            dataType: "json",
+            success: function (data) {
+                alert(data.msg);
+            },
+            error: function (data) {
+                console.log("error:" + JSON.stringify(data));
+            }
+        });
+    }
+</script>
