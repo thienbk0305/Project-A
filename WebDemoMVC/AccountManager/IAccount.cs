@@ -11,6 +11,6 @@ namespace WebDemoMVC.User
     {
         List<Account> Account_GetList();
         int Account_InsertUpdate(Account account, int isUpdate);
-        //int Account_Delete(string username);
+        int Account_Delete(string username);
     }
 }

@@ -1,40 +1,47 @@
-﻿<!DOCTYPE html>
+﻿@model List<WebDemoMVC.EntitiesFrameWork.Entites.Account>
+<div>
+    <form>
+        <!-- Username input -->
+        <div class="form-outline mb-4">
+            <input id="username" class="form-control" />
+            <label class="form-label" for="form2Example1">Username</label>
+        </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-</head>
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" id="password" class="form-control" />
+            <label class="form-label" for="form2Example2">Password</label>
+        </div>
 
-<body>
-    <div>
-        <form>
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-                <input id="username" class="form-control" />
-                <label class="form-label" for="form2Example1">Username</label>
-            </div>
+        <!-- Register buttons -->
+        <button type="button" id="btnRegister" class="btn btn-primary btn-block mb-4">Register</button>
 
-            <!-- Password input -->
-            <div class="form-outline mb-4">
-                <input type="password" id="password" class="form-control" />
-                <label class="form-label" for="form2Example2">Password</label>
-            </div>
+        @{Html.RenderAction("Account", "Account");}
+    </form>
 
-            <!-- Submit button -->
-            @*<button type="button" id="btnSave" class="btn btn-primary btn-block mb-4">Sign in</button>*@
-            <!-- Register buttons -->
-            <button type="button" id="btnRegister" class="btn btn-primary btn-block mb-4">Register</button>
-            <h1>Danh sách tài khoản</h1>
-           @* @{Html.RenderAction("_AccountsList", "Account")};*@
-        </form>
+    <h1>Thông tin tìm kiếm</h1>
+    <form>
+        <input type="text" id="SearchUsername" placeholder="Tên tài khoản">
+        <input type="text" id="SearchCreatedAt" placeholder="Ngày đăng ký">
+        <button type="button" id="btnSearch" class="btn btn-primary btn-block mb-4">Tìm kiếm</button>
+
+    </form>
+    @{Html.RenderAction("Search", "Account");}
+    <div id="search-results">
+
     </div>
-</body>
-</html>
+</div>
 <script>
     $("#btnRegister").click(function () {
         AccountInsert();
     })
+    $("#btnSearch").click(function () {
+        AccountSearch();
+    })
+    //$(document).ready(function () {
+    //    AccountSearch();
+    //});
+
     function AccountInsert() {
         var username = $("#username").val();
         var password = $("#password").val();
@@ -55,5 +62,31 @@
                 console.log("error:" + JSON.stringify(data));
             }
         });
+    }
+    function AccountSearch() {
+        var username = $("#SearchUsername").val();
+
+        var param = {
+            Username: username
+        };
+        $.ajax({
+            type: 'GET',
+            url: "/Account/Search",
+            data: param,
+            dataType: "json",
+            success: function (data) {
+                var accounts = data.accounts;
+                for (var i = 0; i < accounts.length; i++) {
+                    var account = accounts[i];
+
+                    var html = "<div>" +
+                        "<p>Tên tài khoản: <b>" + account.username + "</b></p>" +
+                    "</div>";
+                    
+                    $("#search-results").append(html);
+                }
+            }
+        });
+ 
     }
 </script>

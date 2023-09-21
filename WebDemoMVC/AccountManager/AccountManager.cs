@@ -12,21 +12,21 @@ namespace WebDemoMVC.AccountManager
     public class AccountManager : IAccount
     {
         BlogContext dbContext = new BlogContext();
-        //public int Account_Delete(int accountId)
-        //{
-        //    try
-        //    { 
-        //        var accountRemove = dbContext.Account.Where(c => c.Id == accountId).FirstOrDefault();
+        public int Account_Delete(string accountId)
+        {
+            try
+            {
+                var accountRemove = dbContext.Account.Where(c => c.Id == Guid.Parse(accountId)).FirstOrDefault();
 
-        //        dbContext.Account.Remove(accountRemove);
-        //        return dbContext.SaveChanges();
-        //    }
-        //    catch (Exception)
-        //    {
+                dbContext.Account.Remove(accountRemove);
+                return dbContext.SaveChanges();
+            }
+            catch (Exception)
+            {
 
-        //        return -1;
-        //    }
-        //}
+                return -1;
+            }
+        }
 
         public List<Account> Account_GetList()
         {

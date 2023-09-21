@@ -12,21 +12,25 @@ namespace WebDemoMVC.Controllers
 {
     public class AccountController : Controller
     {
+        BlogContext dbContext = new BlogContext();
         // GET: Account
         public ActionResult Index()
         {
-            //var AccManger = new WebDemoMVC.AccountManager.AccountManager();
-            //var model = new List<Account>();
-            //model = AccManger.Account_GetList().ToList();
-            //return PartialView("Account", model);
             return View();
+        }
+        public ActionResult Account()
+        {
+            var AccManger = new WebDemoMVC.AccountManager.AccountManager();
+            var model = new List<Account>();
+            model = AccManger.Account_GetList().ToList();
+            return PartialView("Account", model);
         }
         [HttpPost]
         public ActionResult Insert(Account model)
         {
             try
             {
-                var BlogManger = new WebDemoMVC.AccountManager.AccountManager();
+                var AccountManger = new WebDemoMVC.AccountManager.AccountManager();
 
                 var acc = new Account
                 {
@@ -36,7 +40,7 @@ namespace WebDemoMVC.Controllers
                     Password = model.Password
                 };
 
-                var result = BlogManger.Account_InsertUpdate(acc, 0);
+                var result = AccountManger.Account_InsertUpdate(acc, 0);
                 if (result > 0)
                 {
                     return Json(new { code = 1, msg = "Thêm mới thành công" });
@@ -52,6 +56,41 @@ namespace WebDemoMVC.Controllers
                 return Json(new { code = -99, msg = ex.Message });
             }
         }
+        [HttpPost]
+        public JsonResult Delete(string id)
+        {
+            try
+            {
+                var AccountManger = new WebDemoMVC.AccountManager.AccountManager();
 
+
+                var result = AccountManger.Account_Delete(id);
+                if (result > 0)
+                {
+                    return Json(new { code = 1, msg = "Xóa mới thành công" });
+                }
+                else
+                {
+                    return Json(new { code = 0, msg = "Xóa mới thất bại" });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { code = -99, msg = ex.Message });
+            }
+        }
+        [HttpGet]
+        public ActionResult Search(Account mode)
+        {
+            
+            var accounts = new List<Account>();
+            accounts = dbContext.Account.Where(account => account.Username.Contains(mode.Username)).ToList();
+            
+            return PartialView("Search", accounts);
+
+
+
+        }
     }
 }

@@ -1,0 +1,21 @@
+﻿
+@model List<WebDemoMVC.EntitiesFrameWork.Entites.Account>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Tên tài khoản</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Count > 0)
+            {
+               foreach (var account in Model)
+                {
+                    <tr>
+                        <td>@account.Username</td>
+                    </tr>
+                }
+            }
+            </tbody>
+    </table>
