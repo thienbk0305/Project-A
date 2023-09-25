@@ -1,0 +1,78 @@
+﻿@model IEnumerable<WebDemoMVC.EntitiesFrameWork.Entites.Product>
+@using System.Web.Mvc.Html
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Index</h2>
+
+<div class="row">
+    <div class="form-group">
+        <div class="col-md-6">
+            <input type="text" class="form-control col-md-8" id="txtKeySearch" />
+            <button class="btn btn-primary " id="btnSave" type="button">Thêm mới</button>
+            <button class="btn btn-primary" id="btnSearch" type="button">Tìm kiếm</button>
+        </div>
+    </div>
+</div>
+<h1>Upload Excel File</h1>
+@using (Html.BeginForm("Upload", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <input type="submit" value="Upload" />
+}
+<div id="search-results"></div>
+<a href="@Url.Action("ExportToExcel", "Product")">Export Excel</a>
+<script>
+    $(document).ready(function () {
+        LoadData("");
+
+        $("#btnSearch").click(function () {
+            var keysearch = $("#txtKeySearch").val();
+            LoadData(keysearch);
+        });
+        $("#btnSave").click(function () {
+            ProductInsert();
+        })
+    });
+    function LoadData(keysearch) {
+
+        var param = {
+            keysearch: keysearch
+        };
+        $.ajax({
+            type: 'GET',
+            url: "/Product/ProductListPartialView",
+            data: param,
+            dataType: "html",
+            success: function (data) {
+                $("#search-results").html("");
+                $("#search-results").html(data);
+            },
+            error: function (data) {
+                console.log("error:" + JSON.stringify(data));
+            }
+        });
+    }
+    function ProductInsert() {
+        var name = $("#txtKeySearch").val();
+
+        var param = {
+            name: name
+        };
+        $.ajax({
+            type: 'POST',
+            url: "/Product/Insert",
+            data: param,
+            dataType: "json",
+            success: function (data) {
+                alert(data.msg);
+                LoadData("");
+            },
+            error: function (data) {
+                console.log("error:" + JSON.stringify(data));
+            }
+        });
+    }
+
+</script>

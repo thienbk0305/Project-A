@@ -22,11 +22,11 @@
     <h1>Thông tin tìm kiếm</h1>
     <form>
         <input type="text" id="SearchUsername" placeholder="Tên tài khoản">
-        <input type="text" id="SearchCreatedAt" placeholder="Ngày đăng ký">
+        <input type="date" id="SearchCreatedAt" placeholder="Ngày đăng ký">
         <button type="button" id="btnSearch" class="btn btn-primary btn-block mb-4">Tìm kiếm</button>
 
     </form>
-    @*@{Html.RenderAction("Search", "Account");}*@
+  
     <div id="search-results">
 
     </div>
@@ -38,9 +38,6 @@
     $("#btnSearch").click(function () {
         AccountSearch();
     })
-    //$(document).ready(function () {
-    //    AccountSearch();
-    //});
 
     function AccountInsert() {
         var username = $("#username").val();
@@ -65,9 +62,11 @@
     }
     function AccountSearch() {
         var username = $("#SearchUsername").val();
+        var username = $("#SearchCreatedAt").val();
 
         var param = {
-            Username: username
+            Username: username,
+            
         };
         $.ajax({
             type: 'GET',
@@ -75,6 +74,7 @@
             data: param,
             dataType: "html",
             success: function (data) {
+                $('#search-results').html("");
                 $('#search-results').html(data);
                 }
         });

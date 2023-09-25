@@ -88,6 +88,11 @@ namespace WebDemoMVC.CategoryManager
                 throw ex;
             }
         }
+
+        internal int Product_InsertUpdate(Product pro, int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

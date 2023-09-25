@@ -85,10 +85,10 @@ namespace WebDemoMVC.Controllers
         {
             
             var accounts = new List<Account>();
-            accounts = dbContext.Account.Where(account => account.Username.Contains(mode.Username)).ToList();
+            accounts = dbContext.Account.Where(account => account.Username.Contains(mode.Username))
+                .Where(account => account.CreatedDate < mode.CreatedDate).ToList();
             
-            return PartialView("Search", accounts);
-
+            return PartialView("Search",accounts);
 
 
         }
